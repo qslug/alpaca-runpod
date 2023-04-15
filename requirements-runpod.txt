@@ -1,0 +1,5 @@
+ipyevents
+ipywidgets
+jupyter-archive
+jupyterlab
+speedtest-cli

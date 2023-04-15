@@ -74,11 +74,15 @@ RUN ln /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.11.8.89 /usr/local/
 RUN ln /usr/local/cuda/targets/x86_64-linux/lib/libnvrtc.so.11.8.89 /usr/local/cuda-11.8/targets/x86_64-linux/lib/libnvrtc.so
 
 
+ADD requirements-runpod.txt /
+RUN pip install --no-cache-dir -r requirements-runpod.txt
+
 WORKDIR /workspace
 RUN git clone https://github.com/tatsu-lab/stanford_alpaca.git
 
 WORKDIR /workspace/stanford_alpaca
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -U git+https://github.com/zphang/transformers.git@68d640f7c368bcaaaecfc678f11908ebbd3d6176
 
 ADD start.sh /
 RUN chmod +x /start.sh
