@@ -83,6 +83,8 @@ RUN git clone https://github.com/tatsu-lab/stanford_alpaca.git
 WORKDIR /workspace/stanford_alpaca
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir -U git+https://github.com/zphang/transformers.git@68d640f7c368bcaaaecfc678f11908ebbd3d6176
+ADD Train.ipynb .
+RUN mkdir output
 
 WORKDIR /workspace
 
